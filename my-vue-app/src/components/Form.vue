@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { defineComponent, ref } from "vue";
 
 import { MyFormData } from "../../src/types";
@@ -37,19 +36,11 @@ export default defineComponent({
     const response = ref<string>();
 
     const handleSubmit = () => {
-      console.log("Form submitted with data:", formData.value);
-      axios
-        .post<string>("http://localhost:3000", formData.value)
-        .then(({ data }) => {
-          response.value = `Thanks ${data}`;
-          formDataStore.setHasMutated();
-        })
-        .catch((e) => console.log("error: ", e.message));
+      formDataStore.addFormDataInstance(formData.value);
       resetForm();
     };
 
     const resetForm = () => {
-      // Reset form data
       formData.value = {
         name: "",
         email: "",

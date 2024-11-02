@@ -21,8 +21,15 @@ export const useFormDataStore = defineStore({
     addFormData(formData: MyFormData[]) {
       this.formDataList = formData;
     },
+    addFormDataInstance(formData: MyFormData) {
+      console.log(formData);
+      this.formDataList = [...this.formDataList, formData];
+    },
     clearFormData() {
       this.formDataList = [];
+    },
+    deleteIndex(index: number) {
+      this.formDataList = [...this.formDataList.filter((_, i) => i !== index)];
     },
     setHasMutated() {
       this.hasMutated = true;
