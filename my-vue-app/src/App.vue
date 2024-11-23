@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import Form from "./components/Form.vue";
 import SubmittedForms from "./components/SubmittedForms.vue";
+import Teachings from "./components/Teachings.vue";
 </script>
 
 <template>
-  <Form />
-  <SubmittedForms />
+  <div style="display: flex; flex-direction: row">
+    <div style="display: flex; flex-direction: column; flex: 1">
+      <Form />
+      <SubmittedForms />
+    </div>
+    <div style="display: flex; flex: 1">
+      <Teachings />
+    </div>
+  </div>
 </template>
 
 <style scoped>
